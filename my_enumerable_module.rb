@@ -11,65 +11,52 @@ module Enumerable
     end
     def my_select
         result = []
-        for i in 0...self.length
-            if yield(self[i])
-                result.push(self[i])
-            end
+        self.my_each do |element|
+            result.push(element) if yield(element)
         end
         result
     end
     def my_all?
         result = true
-        for i in 0...self.length
-            result = result && yield(self[i])
+        self.my_each do |element|
+            result = result && yield(element)
         end
         result
     end
     def my_any?
         result = true
-        for i in 0...self.length
-            result = result || yield(self[i])
+        self.my_each do |element|
+            result = result || yield(element)
         end
         result
     end
     def my_none?
         result = false
-        for i in 0...self.length
-            result = result || yield(self[i])
+        self.my_each do |element|
+            result = result || yield(element)
         end
         !result
     end
     def my_count
         self.length unless block_given?
     end
+    def my_map
+        result = []
+        self.my_each do |element|
+            result.push(yield(element))
+        end
+        result
+    end
+    def my_inject(acc=nil)
+        if acc.nil?
+          acc = self[0]
+          idx = 1
+        else
+          idx = 0
+        end
+        my_each_with_index(idx) do |item|
+          acc = yield(acc, item)
+        end
+        acc
+    end
 end
-
-#TESTS
-puts "\nmy_each"
-[1,2,3].each { |x| puts x }
-[1,2,3].my_each {|x| puts x}
-
-puts "\nmy_each_with_index"
-#sets the start index
-[:foo, :bar, :baz].each.with_index(2) { |value, index| puts "#{index}: #{value}" }
-[:foo, :bar, :baz].my_each_with_index(6) { |value, index| puts "#{index}: #{value}" }
-
-puts "\nmy_select"
-puts ["apple","berry","tomatoe","pinnepple","cocoa"].select { |x| x=="apple"}
-puts ["apple","berry","tomatoe","pinnepple","cocoa"].my_select { |x| x=="apple"}
-
-puts "\nmy_all"
-puts %w[ant bear cat].all? { |word| word.length >= 3 }
-puts %w[ant bear cat].my_all? { |word| word.length >= 3 }
-
-puts "\nmy_any"
-puts %w[ant bear cat].any? { |word| word.length >= 4 } 
-puts %w[ant bear cat].my_any? { |word| word.length >= 4 } 
-
-puts "\nmy_none"
-puts %w{ant bear cat}.none? { |word| word.length == 4 }
-puts %w{ant bear cat}.my_none? { |word| word.length == 4 }
-
-puts "\nmy_count"
-puts [1,2,4,2].count   
-puts [1,2,4,2].my_count    

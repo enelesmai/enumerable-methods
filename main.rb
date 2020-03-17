@@ -1,39 +1,58 @@
 require "./my_enumerable_module"
+require "./my_test"
 
-#TESTS
-puts "\nmy_each"
-[1,2,3].each { |x| puts x }
-[1,2,3].my_each {|x| puts x}
+puts "select an option to test enumerable"
+puts "1) my_each"
+puts "2) my_each_with_index"
+puts "3) my_select"
+puts "4) my_all?"
+puts "5) my_any?"
+puts "6) my_none?"
+puts "7) my_count"
+puts "8) my_map"
+puts "9) my_inject"
 
-puts "\nmy_each_with_index"
-#sets the start index
-[:foo, :bar, :baz].each.with_index(2) { |value, index| puts "#{index}: #{value}" }
-[:foo, :bar, :baz].my_each_with_index(6) { |value, index| puts "#{index}: #{value}" }
+option_enumerable = gets.chomp
 
-puts "\nmy_select"
-puts ["apple","berry","tomatoe","pinnepple","cocoa"].select { |x| x=="apple"}
-puts ["apple","berry","tomatoe","pinnepple","cocoa"].my_select { |x| x=="apple"}
+case option_enumerable 
+      
+    # here 'when' statement contains 
+    # the two values 
+    when "1","2"
+        puts "You order Espresso!"
+      
+    when "3","4"
+        puts "You order Short Macchiato!"
+      
+    when "5","6"
+        puts "You order Ristretto!"
+      
+    when "7","8"
+        puts "You order Cappuccino!"
+      
+else
+    "No Order!"
+end
 
-puts "\nmy_all"
-puts %w[ant bear cat].all? { |word| word.length >= 3 }
-puts %w[ant bear cat].my_all? { |word| word.length >= 3 }
-
-puts "\nmy_any"
-puts %w[ant bear cat].any? { |word| word.length >= 4 } 
-puts %w[ant bear cat].my_any? { |word| word.length >= 4 } 
-
-puts "\nmy_none"
-puts %w{ant bear cat}.none? { |word| word.length == 4 }
-puts %w{ant bear cat}.my_none? { |word| word.length == 4 }
-
-puts "\nmy_count"
-puts [1,2,4,2].count
-puts [1,2,4,2].my_count
-
-puts "\nmy_map"
-puts [1,2,3,4].map{|n| n+1}
-puts [1,2,3,4].my_map{|n| n+1}
-
-puts "\nmy_inject"
-puts([1, 2, 3, 4, 5].inject(10){|acc, val| acc * val})
-puts([1, 2, 3, 4, 5].my_inject(10){|acc, val| acc * val})
+case option_enumerable
+when "1"
+    test_my_each
+when "2"
+    test_my_each_with_index
+when "3"
+    test_my_select
+when "4"
+    test_my_all
+when "5"
+    test_my_any
+when "6"
+    test_my_none
+when "7"
+    test_my_count
+when "8"
+    test_my_map
+when "9"
+    test_my_inject
+else
+    "That method doesn't exists"
+end

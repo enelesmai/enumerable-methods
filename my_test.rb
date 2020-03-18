@@ -13,8 +13,8 @@ end
 
 def test_my_select
   puts "\nmy_select"
-  puts (%w[apple berry tomatoe pinnepple cocoa].select { |x| x == 'apple' })
-  puts (%w[apple berry tomatoe pinnepple cocoa].my_select { |x| x == 'apple' })
+  puts %w[apple berry tomatoe pinnepple cocoa].select { |x| (x == 'apple') }
+  puts %w[apple berry tomatoe pinnepple cocoa].my_select { |x| (x == 'apple') }
 end
 
 def test_my_all

@@ -16,23 +16,23 @@ option_enumerable = gets.chomp
 
 case option_enumerable
 when '1'
-    test_my_each
+  test_my_each
 when '2'
-    test_my_each_with_index
+  test_my_each_with_index
 when '3'
-    test_my_select
+  test_my_select
 when '4'
-    test_my_all
+  test_my_all
 when '5'
-    test_my_any
+  test_my_any
 when '6'
-    test_my_none
+  test_my_none
 when '7'
-    test_my_count
+  test_my_count
 when '8'
-    test_my_map
+  test_my_map
 when '9'
-    test_my_inject
+  test_my_inject
 else
-    "That method doesn't exists"
+  "That method doesn't exists"
 end

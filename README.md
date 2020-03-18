@@ -25,7 +25,7 @@ Tools used on this project
 
 ## Live Demo
 
-You can see the [live preview](https://repl.it/@enelesmai/enumerable-methods-1)
+You can see the [live preview](https://repl.it/@enelesmai/enumerable-methods)
 
 
 ## Authors

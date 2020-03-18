@@ -13,26 +13,26 @@ end
 
 def test_my_select
   puts "\nmy_select"
-  puts %w[apple berry tomatoe pinnepple cocoa].select { |x| x == 'apple' }
-  puts %w[apple berry tomatoe pinnepple cocoa].my_select { |x| x == 'apple' }
+  puts (%w[apple berry tomatoe pinnepple cocoa].select { |x| x == 'apple' })
+  puts (%w[apple berry tomatoe pinnepple cocoa].my_select { |x| x == 'apple' })
 end
 
 def test_my_all
   puts "\nmy_all"
-  puts %w[ant bear cat].all? { |word| word.length >= 3 }
-  puts %w[ant bear cat].my_all? { |word| word.length >= 3 }
+  puts (%w[ant bear cat]).all? { |word| word.length >= 3 }
+  puts (%w[ant bear cat]).my_all? { |word| word.length >= 3 }
 end
 
 def test_my_any
   puts "\nmy_any"
-  puts %w[ant bear cat].any? { |word| word.length >= 4 } 
-  puts %w[ant bear cat].my_any? { |word| word.length >= 4 } 
+  puts (%w[ant bear cat]).any? { |word| word.length >= 4 }
+  puts (%w[ant bear cat]).my_any? { |word| word.length >= 4 }
 end
 
 def test_my_none
   puts "\nmy_none"
-  puts %w{ant bear cat}.none? { |word| word.length == 4 }
-  puts %w{ant bear cat}.my_none? { |word| word.length == 4 }
+  puts (%w[ant bear cat]).none? { |word| word.length == 4 }
+  puts (%w[ant bear cat]).my_none? { |word| word.length == 4 }
 end
 
 def test_my_count
@@ -43,25 +43,25 @@ end
 
 def test_my_map
   puts "\nmy_map"
-  puts [1, 2, 4, 2].map{ |n| n + 1 }
-  puts [1, 2, 4, 2].my_map{ |n| n + 1 }
+  puts [1, 2, 4, 2].map { |n| n + 1 }
+  puts [1, 2, 4, 2].my_map { |n| n + 1 }
 end
 
 def test_my_inject
   puts "\nmy_inject"
-  #sum numbers
+  # sum numbers
   puts [1, 2, 3, 4, 5].inject { |sum, n| sum + n }
   puts [1, 2, 3, 4, 5].my_inject { |sum, n| sum + n }
-  #multiply numbers
+  # multiply numbers
   puts([1, 2, 3, 4, 5].inject(10){ |product, n| product * n })
   puts([1, 2, 3, 4, 5].my_inject(10){ |product, n| product * n })
-  #find the longest word
-  longest = %w{ cat sheep bear }.inject do |memo, word|
+  # find the longest word
+  longest = %w[cat sheep bear].inject do |memo, word|
     memo.length > word.length ? memo : word
   end
-  puts longest   
-  longest = %w{ cat sheep bear }.my_inject do |memo, word|
+  puts longest
+  longest = %w[cat sheep bear].my_inject do |memo, word|
     memo.length > word.length ? memo : word
   end
-  puts longest   
+  puts longest
 end

@@ -47,8 +47,9 @@ module Enumerable
   def my_count
     counter = 0
     return length unless block_given?
+
     my_each do |item|
-      yield item ? counter += 1 : counter += 0
+      counter += 1 if yield item
     end
     counter
   end

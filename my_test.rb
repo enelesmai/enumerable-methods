@@ -13,26 +13,26 @@ end
 
 def test_my_select
   puts "\nmy_select"
-  puts %w[apple berry tomatoe pinnepple cocoa].select { |x| (x == 'apple') }
-  puts %w[apple berry tomatoe pinnepple cocoa].my_select { |x| (x == 'apple') }
+  puts %w[apple berry tomatoe pinnepple cocoa].select { |x| x == 'apple' }
+  puts %w[apple berry tomatoe pinnepple cocoa].my_select { |x| x == 'apple' }
 end
 
 def test_my_all
   puts "\nmy_all"
-  puts (%w[ant bear cat]).all? { |word| word.length >= 3 }
-  puts (%w[ant bear cat]).my_all? { |word| word.length >= 3 }
+  puts %w[ant bear cat].all? { |word| word.length >= 3 }
+  puts %w[ant bear cat].my_all? { |word| word.length >= 3 }
 end
 
 def test_my_any
   puts "\nmy_any"
-  puts (%w[ant bear cat]).any? { |word| word.length >= 4 }
-  puts (%w[ant bear cat]).my_any? { |word| word.length >= 4 }
+  puts %w[ant bear cat].any? { |word| word.length >= 4 }
+  puts %w[ant bear cat].my_any? { |word| word.length >= 4 }
 end
 
 def test_my_none
   puts "\nmy_none"
-  puts (%w[ant bear cat]).none? { |word| word.length == 4 }
-  puts (%w[ant bear cat]).my_none? { |word| word.length == 4 }
+  puts %w[ant bear cat].none? { |word| word.length == 4 }
+  puts %w[ant bear cat].my_none? { |word| word.length == 4 }
 end
 
 def test_my_count

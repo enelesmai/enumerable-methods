@@ -53,8 +53,8 @@ def test_my_inject
   puts [1, 2, 3, 4, 5].inject { |sum, n| sum + n }
   puts [1, 2, 3, 4, 5].my_inject { |sum, n| sum + n }
   # multiply numbers
-  puts([1, 2, 3, 4, 5].inject(10){ |product, n| product * n })
-  puts([1, 2, 3, 4, 5].my_inject(10){ |product, n| product * n })
+  puts([1, 2, 3, 4, 5].inject(10) { |product, n| product * n })
+  puts([1, 2, 3, 4, 5].my_inject(10) { |product, n| product * n })
   # find the longest word
   longest = %w[cat sheep bear].inject do |memo, word|
     memo.length > word.length ? memo : word

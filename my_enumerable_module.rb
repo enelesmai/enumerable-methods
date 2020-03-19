@@ -23,11 +23,22 @@ module Enumerable
     result
   end
 
-  def my_all?
-    return to_enum(:my_all) unless block_given?
+  def my_all?(pattern = nil)
+    return false if pattern.class == Regexp
     result = true
-    my_each do |item|
-      result &&= yield(item)
+    if block_given?
+      return to_enum(:my_all) unless block_given?
+      my_each do |item|
+        result &&= yield(item)
+      end
+    elsif pattern.class === Class
+      my_each do |item|
+        result &&= item.is_a? pattern   
+      end
+    else
+      my_each do |item|
+        result &&= item===pattern 
+      end      
     end
     result
   end

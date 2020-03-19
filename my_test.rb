@@ -21,8 +21,17 @@ end
 
 def test_my_all
   puts "\nmy_all"
-  puts %w[ant bear cat].all? { |word| word.length >= 3 }
-  puts %w[ant bear cat].my_all? { |word| word.length >= 3 }
+  puts [1,2,3,4,5,6].all?{ |num| num <= 6 }
+  puts [1,2,3,4,5,6].my_all?{ |num| num <= 6 }
+
+  puts [1,2,3,4,5,6].all?(Integer)
+  puts [1,2,3,4,5,6].my_all?(Integer)
+
+  puts %w[dog door rod blade].all?(/o/)
+  puts %w[dog door rod blade].my_all?(/o/)
+
+  puts [1,2,3,4,5,6].all?(3)
+  puts [1,2,3,4,5,6].my_all?(3) 
 end
 
 def test_my_any
@@ -67,7 +76,3 @@ def test_my_inject
   end
   puts longest
 end
-
-puts [1,2,3,4,5,6].each.class
-puts [1,2,3,4,5,6].my_each.class
-

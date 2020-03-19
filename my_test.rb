@@ -36,8 +36,17 @@ end
 
 def test_my_any
   puts "\nmy_any"
-  puts %w[ant bear cat].any? { |word| word.length >= 4 }
-  puts %w[ant bear cat].my_any? { |word| word.length >= 4 }
+  puts [nil, false, true, []].any?
+  puts [nil, false, true, []].my_any?
+
+  puts [1,2,3,4,5,6].any?(Integer)
+  puts [1,2,3,4,5,6].my_any?(Integer)
+
+  puts %w[ant bear cat].any?(/d/)
+  puts %w[ant bear cat].my_any?(/d/)
+
+  puts %w[ant bear cat].any?('cat')
+  puts %w[ant bear cat].my_any?('cat')
 end
 
 def test_my_none
@@ -76,3 +85,4 @@ def test_my_inject
   end
   puts longest
 end
+

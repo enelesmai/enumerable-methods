@@ -1,3 +1,5 @@
+require './my_enumerable_module'
+
 def test_my_each
   puts "\nmy_each"
   [1, 2, 3].each { |x| puts x }
@@ -65,3 +67,7 @@ def test_my_inject
   end
   puts longest
 end
+
+puts [1,2,3,4,5,6].each.class
+puts [1,2,3,4,5,6].my_each
+

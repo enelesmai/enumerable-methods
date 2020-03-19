@@ -1,4 +1,3 @@
-require './my_enumerable_module'
 require './my_test'
 
 puts 'select an option to test enumerable'

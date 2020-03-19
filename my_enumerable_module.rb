@@ -1,11 +1,13 @@
 module Enumerable
   def my_each
+    return to_enum(:my_each) unless block_given?
     for i in 0...length
       yield self[i]
     end
   end
 
   def my_each_with_index(start_index = 0)
+    return to_enum(:my_each_with_index) unless block_given?
     for idx in 0...length
       yield(self[idx], idx + start_index)
     end
@@ -13,6 +15,7 @@ module Enumerable
   end
 
   def my_select
+    return to_enum(:my_select) unless block_given?
     result = []
     my_each do |item|
       result.push(item) if yield(item)
@@ -21,6 +24,7 @@ module Enumerable
   end
 
   def my_all?
+    return to_enum(:my_all) unless block_given?
     result = true
     my_each do |item|
       result &&= yield(item)
@@ -29,6 +33,7 @@ module Enumerable
   end
 
   def my_any?
+    return to_enum(:my_any) unless block_given?
     result = true
     my_each do |item|
       result ||= yield(item)
@@ -37,6 +42,7 @@ module Enumerable
   end
 
   def my_none?
+    return to_enum(:my_none) unless block_given?
     result = false
     my_each do |item|
       result ||= yield(item)
@@ -45,6 +51,7 @@ module Enumerable
   end
 
   def my_count
+    return to_enum(:my_count) unless block_given?
     counter = 0
     return length unless block_given?
 
@@ -55,6 +62,7 @@ module Enumerable
   end
 
   def my_map(procedure = nil)
+    return to_enum(:my_map) unless block_given?
     result = []
     if procedure.nil?
       my_each do |item|
@@ -69,6 +77,7 @@ module Enumerable
   end
 
   def my_inject(initial = nil)
+    return to_enum(:my_inject) unless block_given?
     if initial.nil?
       memo = self[0]
       idx = 1

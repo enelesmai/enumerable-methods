@@ -69,5 +69,5 @@ def test_my_inject
 end
 
 puts [1,2,3,4,5,6].each.class
-puts [1,2,3,4,5,6].my_each
+puts [1,2,3,4,5,6].my_each.class
 

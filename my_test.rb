@@ -63,8 +63,17 @@ end
 
 def test_my_count
   puts "\nmy_count"
-  puts [1, 2, 4, 2].count
-  puts [1, 2, 4, 2].my_count
+  puts [1,2,3,4,5].count
+  puts [1,2,3,4,5].my_count
+  
+  puts [1,2,3,4,5].count(3)
+  puts [1,2,3,4,5].my_count(3)
+  
+  puts [1,2,3,4,5].count{ |x| x%2==0 }
+  puts [1,2,3,4,5].my_count{ |x| x%2==0 }
+  
+  puts [1,2,3,4,5].count.class
+  puts [1,2,3,4,5].my_count.class
 end
 
 def test_my_map

@@ -83,14 +83,18 @@ module Enumerable
     !result
   end
 
-  def my_count
-    return to_enum(:my_count) unless block_given?
-    counter = 0
-    return length unless block_given?
-
-    my_each do |item|
-      counter += 1 if yield item
-    end
+  def my_count(item = nil)
+    counter = 0   
+      if(item.nil?)
+        return length unless block_given?
+        my_each do |item|
+          counter += 1 if yield item
+        end
+      else
+        my_each do |x|
+          counter += 1 if x === item
+        end        
+      end
     counter
   end
 

@@ -31,7 +31,7 @@ def test_my_all
   puts %w[dog door rod blade].my_all?(/o/)
 
   puts [1, 2, 3, 4, 5, 6].all?(3)
-  puts [1, 2, 3, 4, 5, 6].my_all?(3) 
+  puts [1, 2, 3, 4, 5, 6].my_all?(3)
 end
 
 def test_my_any
@@ -54,8 +54,8 @@ def test_my_none
   puts [1, 2, 3, 4, 5, 6].none?(String)
   puts [1, 2, 3, 4, 5, 6].my_none?(String)
 
-  puts %w{ant bear cat}.none?(/d/) 
-  puts %w{ant bear cat}.my_none?(/d/) 
+  puts %w[ant bear cat].none?(/d/)
+  puts %w[ant bear cat].my_none?(/d/)
 
   puts %w[dog door rod blade].none?(5)
   puts %w[dog door rod blade].my_none?(5)
@@ -65,13 +65,13 @@ def test_my_count
   puts "\nmy_count"
   puts [1, 2, 3, 4, 5, 6].count
   puts [1, 2, 3, 4, 5, 6].my_count
-  
+
   puts [1, 2, 3, 4, 5, 6].count(3)
   puts [1, 2, 3, 4, 5, 6].my_count(3)
-  
-  puts [1, 2, 3, 4, 5, 6].count{ |x| x%2==0 }
-  puts [1, 2, 3, 4, 5, 6].my_count{ |x| x%2==0 }
-  
+
+  puts [1, 2, 3, 4, 5, 6].count { |x| (x % 2).zero? }
+  puts [1, 2, 3, 4, 5, 6].my_count { |x| (x % 2).zero? }
+
   puts [1, 2, 3, 4, 5, 6].count.class
   puts [1, 2, 3, 4, 5, 6].my_count.class
 end
@@ -99,7 +99,7 @@ def test_my_inject
     memo.length > word.length ? memo : word
   end
   puts longest
-  #using sym
+  # using sym
   puts [1, 2, 3, 4, 5].inject(:+)
   puts [1, 2, 3, 4, 5].my_inject(:+)
 end

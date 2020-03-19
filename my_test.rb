@@ -21,17 +21,17 @@ end
 
 def test_my_all
   puts "\nmy_all"
-  puts [1,2,3,4,5,6].all?{ |num| num <= 6 }
-  puts [1,2,3,4,5,6].my_all?{ |num| num <= 6 }
+  puts [1, 2, 3, 4, 5, 6].all? { |num| num <= 6 }
+  puts [1, 2, 3, 4, 5, 6].my_all? { |num| num <= 6 }
 
-  puts [1,2,3,4,5,6].all?(Integer)
-  puts [1,2,3,4,5,6].my_all?(Integer)
+  puts [1, 2, 3, 4, 5, 6].all?(Integer)
+  puts [1, 2, 3, 4, 5, 6].my_all?(Integer)
 
   puts %w[dog door rod blade].all?(/o/)
   puts %w[dog door rod blade].my_all?(/o/)
 
-  puts [1,2,3,4,5,6].all?(3)
-  puts [1,2,3,4,5,6].my_all?(3) 
+  puts [1, 2, 3, 4, 5, 6].all?(3)
+  puts [1, 2, 3, 4, 5, 6].my_all?(3) 
 end
 
 def test_my_any
@@ -39,8 +39,8 @@ def test_my_any
   puts [nil, false, true, []].any?
   puts [nil, false, true, []].my_any?
 
-  puts [1,2,3,4,5,6].any?(Integer)
-  puts [1,2,3,4,5,6].my_any?(Integer)
+  puts [1, 2, 3, 4, 5, 6].any?(Integer)
+  puts [1, 2, 3, 4, 5, 6].my_any?(Integer)
 
   puts %w[ant bear cat].any?(/d/)
   puts %w[ant bear cat].my_any?(/d/)
@@ -51,8 +51,8 @@ end
 
 def test_my_none
   puts "\nmy_none"
-  puts [1,2,3,4,5].none?(String)
-  puts [1,2,3,4,5].my_none?(String)
+  puts [1, 2, 3, 4, 5, 6].none?(String)
+  puts [1, 2, 3, 4, 5, 6].my_none?(String)
 
   puts %w{ant bear cat}.none?(/d/) 
   puts %w{ant bear cat}.my_none?(/d/) 
@@ -63,23 +63,23 @@ end
 
 def test_my_count
   puts "\nmy_count"
-  puts [1,2,3,4,5].count
-  puts [1,2,3,4,5].my_count
+  puts [1, 2, 3, 4, 5, 6].count
+  puts [1, 2, 3, 4, 5, 6].my_count
   
-  puts [1,2,3,4,5].count(3)
-  puts [1,2,3,4,5].my_count(3)
+  puts [1, 2, 3, 4, 5, 6].count(3)
+  puts [1, 2, 3, 4, 5, 6].my_count(3)
   
-  puts [1,2,3,4,5].count{ |x| x%2==0 }
-  puts [1,2,3,4,5].my_count{ |x| x%2==0 }
+  puts [1, 2, 3, 4, 5, 6].count{ |x| x%2==0 }
+  puts [1, 2, 3, 4, 5, 6].my_count{ |x| x%2==0 }
   
-  puts [1,2,3,4,5].count.class
-  puts [1,2,3,4,5].my_count.class
+  puts [1, 2, 3, 4, 5, 6].count.class
+  puts [1, 2, 3, 4, 5, 6].my_count.class
 end
 
 def test_my_map
   puts "\nmy_map"
-  puts [1, 2, 4, 2].map { |n| n + 1 }
-  puts [1, 2, 4, 2].my_map { |n| n + 1 }
+  puts [1, 2, 3, 4, 5, 6].map { |n| n + 1 }
+  puts [1, 2, 3, 4, 5, 6].my_map { |n| n + 1 }
 end
 
 def test_my_inject
@@ -100,6 +100,6 @@ def test_my_inject
   end
   puts longest
   #using sym
-  puts [1,2,3,4,5].inject(:+)
-  puts [1,2,3,4,5].my_inject(:+)
+  puts [1, 2, 3, 4, 5].inject(:+)
+  puts [1, 2, 3, 4, 5].my_inject(:+)
 end

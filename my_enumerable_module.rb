@@ -36,13 +36,13 @@ module Enumerable
       my_each do |item|
         result &&= yield(item)
       end
-    elsif pattern.class === Class
+    elsif pattern.class == Class
       my_each do |item|
         result &&= item.is_a? pattern
       end
     else
       my_each do |item|
-        result &&= item===pattern
+        result &&= item == pattern
       end
     end
     result
@@ -58,13 +58,13 @@ module Enumerable
       my_each do |item|
         result ||= yield(item)
       end
-    elsif pattern.class === Class
+    elsif pattern.class == Class
       my_each do |item|
         result ||= item.is_a? pattern
       end
     else
       my_each do |item|
-        result ||= item===pattern
+        result ||= item == pattern
       end
     end
     result
@@ -80,31 +80,31 @@ module Enumerable
       my_each do |item|
         result ||= yield(item)
       end
-    elsif pattern.class === Class
+    elsif pattern.class == Class
       my_each do |item|
         result ||= item.is_a? pattern
       end
     else
       my_each do |item|
-        result ||= item===pattern
+        result ||= item == pattern
       end
     end
     !result
   end
 
-  def my_count(item = nil)
+  def my_count(value = nil)
     counter = 0
-      if(item.nil?)
-        return length unless block_given?
+    if value.nil?
+      return length unless block_given?
 
-        my_each do |item|
-          counter += 1 if yield item
-        end
-      else
-        my_each do |x|
-          counter += 1 if x === item
-        end
+      my_each do |item|
+        counter += 1 if yield item
       end
+    else
+      my_each do |item|
+        counter += 1 if item == value
+      end
+    end
     counter
   end
 
@@ -131,9 +131,7 @@ module Enumerable
       idx = 1
     else
       idx = 0
-      if !sym.nil?
-        use_symbol = true
-      end
+      use_symbol = true unless sym.nil?
       if initial.is_a? Symbol
         use_symbol = true
         sym = initial
@@ -146,9 +144,9 @@ module Enumerable
       for i in idx...length
         case sym
         when :+
-          memo = memo + self[i]
+          memo += self[i]
         when :*
-          memo = memo * self[i]
+          memo *= self[i]
         end
       end
     else

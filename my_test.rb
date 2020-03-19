@@ -99,4 +99,7 @@ def test_my_inject
     memo.length > word.length ? memo : word
   end
   puts longest
+  #using sym
+  puts [1,2,3,4,5].inject(:+)
+  puts [1,2,3,4,5].my_inject(:+)
 end

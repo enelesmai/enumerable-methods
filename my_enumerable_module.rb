@@ -113,18 +113,39 @@ module Enumerable
     result
   end
 
-  def my_inject(initial = nil)
-    return to_enum(:my_inject) unless block_given?
+  def my_inject(initial = nil, sym = nil)
+    use_symbol = false
     if initial.nil?
       memo = self[0]
       idx = 1
     else
       idx = 0
-      memo = initial
+      if !sym.nil?
+        use_symbol = true
+      end
+      if initial.is_a? Symbol
+        use_symbol = true
+        sym = initial
+        memo = sym == :* ? 1 : 0
+      else
+        memo = initial
+      end
     end
-    for i in idx...length
-      memo = yield(memo, self[i])
+    if use_symbol
+      for i in idx...length
+        case sym
+        when :+
+          memo = memo + self[i]
+        when :*
+          memo = memo * self[i]
+        end
+      end
+    else
+      for i in idx...length
+        memo = yield(memo, self[i])
+      end
     end
     memo
   end
+
 end

@@ -9,7 +9,7 @@ module Enumerable
 
   def my_each_with_index(start_index = 0)
     return to_enum(:my_each_with_index) unless block_given?
-    
+
     for idx in 0...length
       yield(self[idx], idx + start_index)
     end
@@ -18,7 +18,7 @@ module Enumerable
 
   def my_select
     return to_enum(:my_select) unless block_given?
-    
+
     result = []
     my_each do |item|
       result.push(item) if yield(item)
@@ -28,89 +28,89 @@ module Enumerable
 
   def my_all?(pattern = nil)
     return false if pattern.class == Regexp
-    
+
     result = true
     if block_given?
       return to_enum(:my_all) unless block_given?
-    
+
       my_each do |item|
         result &&= yield(item)
       end
     elsif pattern.class === Class
       my_each do |item|
-        result &&= item.is_a? pattern   
+        result &&= item.is_a? pattern
       end
     else
       my_each do |item|
-        result &&= item===pattern 
-      end      
+        result &&= item===pattern
+      end
     end
     result
   end
 
   def my_any?(pattern = nil)
     return false if pattern.class == Regexp
-    
+
     result = true
     if block_given?
       return to_enum(:my_any) unless block_given?
-    
+
       my_each do |item|
         result ||= yield(item)
       end
     elsif pattern.class === Class
       my_each do |item|
-        result ||= item.is_a? pattern   
+        result ||= item.is_a? pattern
       end
     else
       my_each do |item|
-        result ||= item===pattern 
-      end      
+        result ||= item===pattern
+      end
     end
     result
   end
 
   def my_none?(pattern = nil)
     return true if pattern.class == Regexp
-    
+
     result = false
     if block_given?
       return to_enum(:my_any) unless block_given?
-    
+
       my_each do |item|
         result ||= yield(item)
       end
     elsif pattern.class === Class
       my_each do |item|
-        result ||= item.is_a? pattern   
+        result ||= item.is_a? pattern
       end
     else
       my_each do |item|
-        result ||= item===pattern 
-      end      
+        result ||= item===pattern
+      end
     end
     !result
   end
 
   def my_count(item = nil)
-    counter = 0   
+    counter = 0
       if(item.nil?)
         return length unless block_given?
-    
+
         my_each do |item|
           counter += 1 if yield item
         end
       else
         my_each do |x|
           counter += 1 if x === item
-        end        
+        end
       end
     counter
   end
 
   def my_map(procedure = nil)
     return to_enum(:my_map) unless block_given?
-    
+
     result = []
     if procedure.nil?
       my_each do |item|

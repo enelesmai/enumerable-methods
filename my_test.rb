@@ -51,8 +51,14 @@ end
 
 def test_my_none
   puts "\nmy_none"
-  puts %w[ant bear cat].none? { |word| word.length == 4 }
-  puts %w[ant bear cat].my_none? { |word| word.length == 4 }
+  puts [1,2,3,4,5].none?(String)
+  puts [1,2,3,4,5].my_none?(String)
+
+  puts %w{ant bear cat}.none?(/d/) 
+  puts %w{ant bear cat}.my_none?(/d/) 
+
+  puts %w[dog door rod blade].none?(5)
+  puts %w[dog door rod blade].my_none?(5)
 end
 
 def test_my_count
@@ -85,4 +91,3 @@ def test_my_inject
   end
   puts longest
 end
-

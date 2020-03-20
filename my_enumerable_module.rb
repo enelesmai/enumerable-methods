@@ -80,7 +80,7 @@ module Enumerable
       end
     else
       my_each do |item|
-        result = false if item.nil?  || item == false
+        result ||= !item.nil? && item != false
       end
     end
     result

@@ -9,7 +9,7 @@ AllCops:
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Max: 30
+  Max: 50
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
@@ -47,4 +47,6 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Lint/AmbiguousBlockAssociation:
+  Enabled: false
+Lint/ParenthesesAsGroupedExpression:
   Enabled: false

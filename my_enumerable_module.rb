@@ -50,7 +50,7 @@ module Enumerable
       end
     else
       my_each do |item|
-        result &&= false if item.nil?  || item == false
+        result &&= false if item.nil? || item == false
       end
     end
     result
@@ -110,7 +110,7 @@ module Enumerable
       end
     else
       my_each do |item|
-        result = false if item.nil?  || item == false
+        result = false if item.nil? || item == false
       end
     end
     !result
@@ -150,7 +150,7 @@ module Enumerable
 
   def my_inject(initial = nil, sym = nil)
     use_symbol = false
-    my_array = self.to_a
+    my_array = to_a
     if initial.nil?
       memo = my_array[0]
       idx = 1

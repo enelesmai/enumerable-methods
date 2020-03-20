@@ -36,8 +36,8 @@ def test_my_all
   p [1, true, 'hi', []].all?
   p [1, true, 'hi', []].my_all?
 
-  p ['d','d','d'].all?(/d/)
-  p ['d','d','d'].my_all?(/d/)
+  p %w[d d d].all?(/d/)
+  p %w[d d d].my_all?(/d/)
 end
 
 def test_my_any
@@ -63,8 +63,8 @@ def test_my_any
   p %w[ghetto wild hellz].any?(/z/)
   p %w[ghetto wild hellz].my_any?(/z/)
 
-  p [2, 32, ].any?('cat')
-  p [2, 32, ].my_any?('cat')
+  p [2, 32].any?('cat')
+  p [2, 32].my_any?('cat')
 
   block = proc { |num| num <= 2 }
   p [3, 43, 4, 234].any?(&block)

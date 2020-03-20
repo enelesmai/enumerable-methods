@@ -47,6 +47,23 @@ def test_my_any
 
   puts %w[ant bear cat].any?('cat')
   puts %w[ant bear cat].my_any?('cat')
+
+  p [nil, false, nil, false].any?
+  p [nil, false, nil, false].my_any?
+
+  p ['car'].any?(Integer)
+  p ['car'].my_any?(Integer)
+
+  p %w[ghetto wild hellz].any?(/z/)
+  p %w[ghetto wild hellz].my_any?(/z/)
+
+  p [2, 32, ].any?('cat')
+  p [2, 32, ].my_any?('cat')
+
+  block = proc { |num| num <= 2 }
+  p [3, 43, 4, 234].any?(&block)
+  p [3, 43, 4, 234].my_any?(&block)
+
 end
 
 def test_my_none

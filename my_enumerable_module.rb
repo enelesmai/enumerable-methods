@@ -27,8 +27,6 @@ module Enumerable
   end
 
   def my_all?(pattern = nil)
-    return false if pattern.class == Regexp
-
     result = true
     if block_given?
       return to_enum(:my_all) unless block_given?
@@ -40,9 +38,19 @@ module Enumerable
       my_each do |item|
         result &&= item.is_a? pattern
       end
+    elsif !pattern.nil?
+      if pattern.class == Regexp
+        my_each do |item|
+          result &&= pattern.match?(item)
+        end
+      else
+        my_each do |item|
+          result &&= item == pattern
+        end
+      end
     else
       my_each do |item|
-        result &&= item == pattern
+        result &&= false if item.nil?  || item == false
       end
     end
     result

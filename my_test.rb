@@ -32,6 +32,12 @@ def test_my_all
 
   puts [1, 2, 3, 4, 5, 6].all?(3)
   puts [1, 2, 3, 4, 5, 6].my_all?(3)
+
+  p [1, true, 'hi', []].all?
+  p [1, true, 'hi', []].my_all?
+
+  p ['d','d','d'].all?(/d/)
+  p ['d','d','d'].my_all?(/d/)
 end
 
 def test_my_any

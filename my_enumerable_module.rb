@@ -150,8 +150,9 @@ module Enumerable
 
   def my_inject(initial = nil, sym = nil)
     use_symbol = false
+    my_array = self.to_a
     if initial.nil?
-      memo = self[0]
+      memo = my_array[0]
       idx = 1
     else
       idx = 0
@@ -165,17 +166,17 @@ module Enumerable
       end
     end
     if use_symbol
-      for i in idx...length
+      for i in idx...my_array.length
         case sym
         when :+
-          memo += self[i]
+          memo += my_array[i]
         when :*
-          memo *= self[i]
+          memo *= my_array[i]
         end
       end
     else
-      for i in idx...length
-        memo = yield(memo, self[i])
+      for i in idx...my_array.length
+        memo = yield(memo, my_array[i])
       end
     end
     memo

@@ -130,4 +130,10 @@ def test_my_inject
   # using sym
   puts [1, 2, 3, 4, 5].inject(:+)
   puts [1, 2, 3, 4, 5].my_inject(:+)
+
+  p (1..5).inject(4) { |prod, n| prod * n }
+  p (1..5).my_inject(4) { |prod, n| prod * n }
+
+  p (5..10).inject(2, :*)
+  p (5..10).my_inject(2, :*)
 end

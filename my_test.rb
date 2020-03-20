@@ -69,7 +69,6 @@ def test_my_any
   block = proc { |num| num <= 2 }
   p [3, 43, 4, 234].any?(&block)
   p [3, 43, 4, 234].my_any?(&block)
-
 end
 
 def test_my_none
@@ -82,6 +81,12 @@ def test_my_none
 
   puts %w[dog door rod blade].none?(5)
   puts %w[dog door rod blade].my_none?(5)
+
+  p %w[hello milk milo].none?(/i/)
+  p %w[hello milk milo].my_none?(/i/)
+
+  p [nil, false, nil, false] .none?
+  p [nil, false, nil, false] .my_none?
 end
 
 def test_my_count

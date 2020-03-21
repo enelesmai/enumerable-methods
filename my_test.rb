@@ -150,3 +150,10 @@ def test_my_inject
   p (5..10).inject(2, :*)
   p (5..10).my_inject(2, :*)
 end
+
+def multiply_els(arr)
+  p arr.my_inject(:*)
+  p arr.my_inject { |memo, n| memo * n }
+end
+
+multiply_els([2,4,5])

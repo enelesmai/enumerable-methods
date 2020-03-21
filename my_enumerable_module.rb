@@ -110,7 +110,7 @@ module Enumerable
       end
     else
       my_each do |item|
-        result = false if item.nil? || item == false
+        result ||= item == true
       end
     end
     !result

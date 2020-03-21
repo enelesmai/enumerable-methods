@@ -87,6 +87,19 @@ def test_my_none
 
   p [nil, false, nil, false] .none?
   p [nil, false, nil, false] .my_none?
+
+  p [nil, false, nil, true] .none?
+  p [nil, false, nil, true] .my_none?
+
+  p [].none?
+  p [nil].none?
+  p [nil, false].none?
+  p [nil, false, true].none?
+  p "\n"
+  p [].my_none?
+  p [nil].my_none?
+  p [nil, false].my_none?
+  p [nil, false, true].my_none?
 end
 
 def test_my_count

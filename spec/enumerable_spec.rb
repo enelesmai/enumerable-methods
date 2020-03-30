@@ -183,4 +183,22 @@ describe Enumerable do
       end
     end
   end
+
+  describe '#my_count' do
+    context 'when no block is given' do
+      it 'returns total of items in the array' do
+        expect(array.my_count).to eql(array.count)
+      end
+    end
+    context 'when an argument is given' do
+      it 'returns total of items that are equals' do
+        expect(array.my_count(2)).to eql(array.count(2))
+      end
+    end
+    context 'when an block is given' do
+      it 'returns total of matching items' do
+        expect(array.my_count(&:even?)).to eql(array.count(&:even?))
+      end
+    end
+  end
 end

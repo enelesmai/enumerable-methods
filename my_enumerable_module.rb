@@ -5,6 +5,7 @@ module Enumerable
     for i in 0...length
       yield self[i]
     end
+    self
   end
 
   def my_each_with_index(start_index = 0)
@@ -181,5 +182,4 @@ module Enumerable
     end
     memo
   end
-
 end

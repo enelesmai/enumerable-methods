@@ -86,16 +86,53 @@ describe Enumerable do
         expect(array_string.my_all? { |word| word.length >= 4 }).to eql(expected)
       end
     end
-    context 'when the regular expression is given' do
+    context 'when regular expression is given' do
       it 'items are not false or nil' do
         expected = array_string.all?(/t/)
         expect(array_string.my_all?(/t/)).to eql(expected)
       end
     end
-    context 'when the class is given' do
+    context 'when class is given' do
       it 'items are not false or nil' do
         expected = array_with_invalid_numeric.all?(Numeric)
         expect(array_with_invalid_numeric.my_all?(Numeric)).to eql(expected)
+      end
+    end
+  end
+
+  describe '#my_any?' do
+    context 'when no block is given' do
+      it 'returns false' do
+        expect([].my_any?).to eql(false)
+      end
+      it 'items are false or nil' do
+        expect(array_with_nil.my_any?).to eql(array_with_nil.any?)
+      end
+    end
+    context 'when block is given' do
+      it 'items are not false or nil' do
+        expected = array_string.any? { |word| word.length >= 3 }
+        expect(array_string.my_any? { |word| word.length >= 3 }).to eql(expected)
+      end
+      it 'items are not false or nil' do
+        expected = array_string.any? { |word| word.length >= 4 }
+        expect(array_string.my_any? { |word| word.length >= 4 }).to eql(expected)
+      end
+    end
+    context 'when regular expression is given' do
+      it 'items are not false or nil' do
+        expected = array_string.any?(/t/)
+        expect(array_string.my_any?(/t/)).to eql(expected)
+      end
+    end
+    context 'when class is given' do
+      it 'items are false or nil' do
+        expected = array.any?(Numeric)
+        expect(array.my_any?(Numeric)).to eql(expected)
+      end
+      it 'items are not false or nil' do
+        expected = array_with_nil.any?(Numeric)
+        expect(array_with_nil.my_any?(Numeric)).to eql(expected)
       end
     end
   end

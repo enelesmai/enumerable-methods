@@ -58,11 +58,11 @@ describe Enumerable do
     end
     context 'when block is given' do
       it 'returns array containing the matching elements' do
-        expected = array.my_select(&:even?)
+        expected = array.select(&:even?)
         expect(array.my_select(&:even?)).to eql(expected)
       end
       it 'returns array containing the matching elements of an operation' do
-        expected = array.my_select { |item| item % 3 == 0 }
+        expected = array.select { |item| item % 3 == 0 }
         expect(array.my_select { |item| item % 3 == 0 }).to eql(expected)
       end
     end
@@ -200,5 +200,31 @@ describe Enumerable do
         expect(array.my_count(&:even?)).to eql(array.count(&:even?))
       end
     end
+  end
+
+  describe '#my_map' do
+    context 'when no block is given' do
+      it 'returns enum when no block is given' do
+        expect(array.my_map).to be_an Enumerator
+      end
+    end
+    context 'when block is given' do
+      it 'returns array containing true or false ' do
+        expected = array.map { |item| item % 3 == 0 }
+        expect(array.my_map { |item| item % 3 == 0 }).to eql(expected)
+      end
+    end
+    context 'when block not given and param is given' do
+      it 'returns array containing true or false' do
+        expected = array.map(&:even?)
+        expect(array.my_map(&:even?)).to eql(expected)
+      end
+    end
+    # context 'when range and block are given' do
+    #  it 'returns array with the given operation' do
+    #    expected = (1..4).map{ |i| i*i }
+    #    expect((1..4).my_map{ |i| i*i }).to eql(expected)
+    #  end
+    # end
   end
 end

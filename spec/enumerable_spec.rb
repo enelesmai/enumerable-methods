@@ -227,4 +227,71 @@ describe Enumerable do
       end
     end
   end
+
+  describe '#my_inject' do
+    context 'when a block is given using an array' do
+      it 'returns the final value of the sum' do
+        expected = array.inject { |sum, n| sum + n }
+        expect(array.my_inject { |sum, n| sum + n }).to eql(expected)
+      end
+      it 'returns the final value of the multiplication' do
+        expected = array.inject { |product, n| product * n }
+        expect(array.my_inject { |product, n| product * n }).to eql(expected)
+      end
+    end
+    context 'when a block is given using a range' do
+      it 'returns the final value of the sum' do
+        expected = (5..10).inject { |sum, n| sum + n }
+        expect((5..10).my_inject { |sum, n| sum + n }).to eql(expected)
+      end
+      it 'returns the final value of the multiplication' do
+        expected = (5..10).inject { |product, n| product * n }
+        expect((5..10).my_inject { |product, n| product * n }).to eql(expected)
+      end
+    end
+    context 'when a block is given using an array and with initial value' do
+      it 'returns the final value of the sum' do
+        expected = array.inject(3) { |sum, n| sum + n }
+        expect(array.my_inject(3) { |sum, n| sum + n }).to eql(expected)
+      end
+      it 'returns the final value of the multiplication' do
+        expected = array.inject(3) { |product, n| product * n }
+        expect(array.my_inject(3) { |product, n| product * n }).to eql(expected)
+      end
+    end
+    context 'when a block is given using a range and with initial value' do
+      it 'returns the final value of the sum' do
+        expected = (5..10).inject(1) { |sum, n| sum + n }
+        expect((5..10).my_inject(1) { |sum, n| sum + n }).to eql(expected)
+      end
+      it 'returns the final value of the multiplication' do
+        expected = (5..10).inject(1) { |product, n| product * n }
+        expect((5..10).my_inject(1) { |product, n| product * n }).to eql(expected)
+      end
+    end
+    context 'when a block is given using array of strings' do
+      it 'returns the longest string' do
+        expected = array_string.inject { |memo, word| memo.length > word.length ? memo : word }
+        expect(array_string.my_inject { |memo, word| memo.length > word.length ? memo : word }).to eql(expected)
+      end
+    end
+    context 'when a symbol is given' do
+      it 'returns the result of the operation' do
+        expected = array.inject(:+)
+        expect(array.my_inject(:+)).to eql(expected)
+      end
+      it 'returns the result of the operation' do
+        expected = array.inject(:*)
+        expect(array.my_inject(:*)).to eql(expected)
+      end
+      it 'returns the result of the operation with an initial value' do
+        expected = array.inject(5, :+)
+        expect(array.my_inject(5, :+)).to eql(expected)
+      end
+      it 'returns the result of the operation with an initial value' do
+        expected = array.inject(5, :*)
+        expect(array.my_inject(5, :*)).to eql(expected)
+      end
+    end
+  end
 end

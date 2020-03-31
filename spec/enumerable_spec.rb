@@ -80,34 +80,34 @@ describe Enumerable do
 
   describe '#my_all?' do
     context 'when no block is given' do
-      it 'items are not false or nil' do
+      it 'returns true if items are not nil or false' do
         expect(array_string.my_all?).to eql(array_string.all?)
       end
-      it 'items are false or nil' do
+      it 'returns false if any of the items is nil or false' do
         expect(array_with_nil.my_all?).to eql(array_with_nil.all?)
       end
-      it 'items are not given' do
+      it 'returns true if items are not given' do
         expect([].my_all?).to eql([].all?)
       end
     end
     context 'when block is given' do
-      it 'items are not false or nil' do
+      it 'if items are not false or nil returns true if the block never returns false' do
         expected = array_string.all? { |word| word.length >= 3 }
         expect(array_string.my_all? { |word| word.length >= 3 }).to eql(expected)
       end
-      it 'items are not false or nil' do
+      it 'if items are not false or nil returns false when the block returns false.' do
         expected = array_string.all? { |word| word.length >= 4 }
         expect(array_string.my_all? { |word| word.length >= 4 }).to eql(expected)
       end
     end
     context 'when regular expression is given' do
-      it 'items are not false or nil' do
+      it 'returns true when elements match with the given expression' do
         expected = array_string.all?(/t/)
         expect(array_string.my_all?(/t/)).to eql(expected)
       end
     end
     context 'when class is given' do
-      it 'items are not false or nil' do
+      it 'Items are not nil or false returns true when each item is an instance of the given class' do
         expected = array_with_invalid_numeric.all?(Numeric)
         expect(array_with_invalid_numeric.my_all?(Numeric)).to eql(expected)
       end
@@ -119,32 +119,32 @@ describe Enumerable do
       it 'returns false' do
         expect([].my_any?).to eql(false)
       end
-      it 'items are false or nil' do
+      it 'returns true if any of the items is nil or false' do
         expect(array_with_nil.my_any?).to eql(array_with_nil.any?)
       end
     end
     context 'when block is given' do
-      it 'items are not false or nil' do
+      it 'items are not false or nil returns true if the block returns at least once' do
         expected = array_string.any? { |word| word.length >= 3 }
         expect(array_string.my_any? { |word| word.length >= 3 }).to eql(expected)
       end
-      it 'items are not false or nil' do
+      it 'items are not false or nil returns false if the block never returns true' do
         expected = array_string.any? { |word| word.length >= 4 }
         expect(array_string.my_any? { |word| word.length >= 4 }).to eql(expected)
       end
     end
     context 'when regular expression is given' do
-      it 'items are not false or nil' do
+      it 'items are not false or nil returns true if any of the items returns true' do
         expected = array_string.any?(/t/)
         expect(array_string.my_any?(/t/)).to eql(expected)
       end
     end
-    context 'when class is given' do
-      it 'items are false or nil' do
+    context 'when class is given as the pattern param' do
+      it 'items are false or nil returns true when at least one item is an instance of the given class' do
         expected = array.any?(Numeric)
         expect(array.my_any?(Numeric)).to eql(expected)
       end
-      it 'items are not false or nil' do
+      it 'items are not false or nil returns true when at least one item is an instance of the given class' do
         expected = array_with_nil.any?(Numeric)
         expect(array_with_nil.my_any?(Numeric)).to eql(expected)
       end

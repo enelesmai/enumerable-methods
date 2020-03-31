@@ -220,11 +220,11 @@ describe Enumerable do
         expect(array.my_map(&:even?)).to eql(expected)
       end
     end
-    # context 'when range and block are given' do
-    #  it 'returns array with the given operation' do
-    #    expected = (1..4).map{ |i| i*i }
-    #    expect((1..4).my_map{ |i| i*i }).to eql(expected)
-    #  end
-    # end
+    context 'when range and block are given' do
+      it 'returns array with the given operation' do
+        expected = (1..4).map { |i| i * i }
+        expect((1..4).my_map { |i| i * i }).to eql(expected)
+      end
+    end
   end
 end

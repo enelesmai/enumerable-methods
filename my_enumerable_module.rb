@@ -2,8 +2,9 @@ module Enumerable
   def my_each
     return to_enum(:my_each) unless block_given?
 
-    for i in 0...length
-      yield self[i]
+    my_array = to_a
+    for i in 0...my_array.length
+      yield my_array[i]
     end
     self
   end

@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module Enumerable
   def my_each
     return to_enum(:my_each) unless block_given?
@@ -184,3 +185,4 @@ module Enumerable
     memo
   end
 end
+# rubocop:enable Metrics/ModuleLength

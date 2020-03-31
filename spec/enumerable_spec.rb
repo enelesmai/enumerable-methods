@@ -10,12 +10,15 @@ describe Enumerable do
   let(:array_with_false) { [nil, false] }
   let(:array_with_true) { [nil, false, true] }
   describe '#my_each' do
-    it 'returns enum when no block is given' do
-      expect(array.my_each).to be_an Enumerator
+    context 'when no block is given' do
+      it 'returns enum' do
+        expect(array.my_each).to be_an Enumerator
+      end
     end
-    it 'returns self when block is given' do
-      expected = array.each { |item| puts item }
-      expect(array.my_each { |item| puts item }).to eql(expected)
+    context 'when block is given' do
+      it 'returns self' do
+        expect(array.my_each { |item| item + 3 }).to eql(array)
+      end
     end
   end
 
@@ -27,24 +30,32 @@ describe Enumerable do
     end
     context 'when block is given' do
       it 'returns self' do
-        expected = array.each_with_index { |item, _index| puts item }
-        expect(array.my_each_with_index { |item, _index| puts item }).to eql(expected)
+        expect(array.my_each_with_index { |item, _index| item }).to eql(array)
       end
     end
     context 'when operation is given for item' do
       it 'loops to each item' do
-        expected = array.each_with_index { |item, _index| item + 1 }
-        expect(array.my_each_with_index { |item, _index| item + 1 }).to eql(expected)
+        expected = 0
+        array.each_with_index { |item, _index| expected += item + 1 }
+        calculated = 0
+        array.my_each_with_index { |item, _index| calculated += item + 1 }
+        expect(calculated).to eql(expected)
       end
     end
     context 'when operation is given for index' do
-      it 'loops to each index ' do
-        expected = array.each_with_index { |_item, index| index + 1 }
-        expect(array.my_each_with_index { |_item, index| index + 1 }).to eql(expected)
+      it 'iterates each element with respective index' do
+        expected = 0
+        array.each_with_index { |_item, index| expected += index + 1 }
+        calculated = 0
+        array.my_each_with_index { |_item, index| calculated += index + 1 }
+        expect(calculated).to eql(expected)
       end
-      it 'loops to each index' do
-        expected = array.each_with_index { |_item, index| index * 1 }
-        expect(array.my_each_with_index { |_item, index| index * 1 }).to eql(expected)
+      it 'iterates each element with respective index' do
+        expected = 0
+        array.each_with_index { |_item, index| expected += index * 1 }
+        calculated = 0
+        array.my_each_with_index { |_item, index| calculated += index * 1 }
+        expect(calculated).to eql(expected)
       end
     end
   end

@@ -11,12 +11,14 @@ Concepts used on this project
 - Ruby
 - Loops
 - Yield
+- Describe, let and it for testing
 
 Tools used on this project
 
 - Visual Studio Code
 - VSCode Ruby by Stafford Brunk
-- Rufo (Ruby Formatter) by Matt Bessey
+- Rubocop for Visual Studio Code
+- RSpec testing framework
 
 
 ## Screenshot

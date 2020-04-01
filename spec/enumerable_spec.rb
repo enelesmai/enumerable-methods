@@ -1,4 +1,3 @@
-require 'rspec'
 require './my_enumerable_module.rb'
 describe Enumerable do
   let(:array) { [1, 2, 3, 4, 5] }

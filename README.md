@@ -20,6 +20,29 @@ Tools used on this project
 - Rubocop for Visual Studio Code
 - RSpec testing framework
 
+## Testing with RSpec 
+
+To run the test cases with RSpec we have to follow this steps:
+
+installing RSpec
+
+    gem install rspec
+
+Once that’s done, you can verify your version of RSpec with, for this project we had used the version 3.9 
+
+    rspec --version
+
+finally run for watch the results
+
+    rspec
+
+
+## Watch the result of RSpec
+
+if you want to see the result of testing with rspec follow this link [Results](./rspec_results.html)
+
+![image](./scren-rspec.png)
+
 
 ## Screenshot
 

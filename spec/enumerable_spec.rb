@@ -153,41 +153,45 @@ describe Enumerable do
 
   describe '#my_none?' do
     context 'when no block is given' do
-      it 'returns false' do
+      it 'returns true' do
         expect([].my_none?).to eql(true)
       end
-      it 'items are nil' do
+      it 'return true if items are nil' do
         expect(array_with_one_nil.my_none?).to eql(array_with_one_nil.none?)
       end
-      it 'items are false or nil' do
+      it 'return true if items are false or nil' do
         expect(array_with_false.my_none?).to eql(array_with_false.none?)
       end
-      it 'at least one item is true' do
+      it 'return false if at least one item is true' do
         expect(array_with_true.my_none?).to eql(array_with_true.none?)
       end
     end
-    context 'when block is given' do
-      it 'items are not false or nil' do
+    context 'when block is given and items are not false or nil' do
+      it 'return true if none items satisfies the condition' do
         expected = array_string.none? { |word| word.length == 5 }
         expect(array_string.my_none? { |word| word.length == 5 }).to eql(expected)
       end
-      it 'items are not false or nil' do
+      it 'return false if any items satisfies the condition' do
         expected = array_string.none? { |word| word.length >= 4 }
         expect(array_string.my_none? { |word| word.length >= 4 }).to eql(expected)
       end
     end
-    context 'when regular expression is given' do
-      it 'items are not false or nil' do
+    context 'when regular expression is given and items are not false or nil' do
+      it 'return true if none items satisfies the condition' do
         expected = array_string.none?(/d/)
         expect(array_string.my_none?(/d/)).to eql(expected)
       end
+      it 'return false if any items satisfies the condition' do
+        expected = array_string.none?(/b/)
+        expect(array_string.my_none?(/b/)).to eql(expected)
+      end
     end
-    context 'when class is given' do
-      it 'items are false or nil' do
+    context 'when class is given and items are false or nil' do
+      it 'return true if none items satisfies the condition' do
         expected = array_with_true.none?(Numeric)
         expect(array_with_true.my_none?(Numeric)).to eql(expected)
       end
-      it 'items are not false or nil' do
+      it 'return true if any items satisfies the condition' do
         expected = array_with_invalid_float.none?(Float)
         expect(array_with_invalid_float.my_none?(Float)).to eql(expected)
       end
